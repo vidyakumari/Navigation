@@ -1,0 +1,64 @@
+.card {
+  height: 220px;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  background-color: azure;
+}
+.body{
+  background-color: beige;
+}
+.cborder{
+  border-right: 1px solid black;
+  height: 150px;
+}
+.foot{
+  width:100%;
+  text-align: center;
+  bottom:0px;
+  position: fixed;
+  color: white;
+  height: 50px;
+  background-color:black; 
+}
+
+.btn{
+  float: right;
+  color: black;
+  margin-top: 30px;
+  margin-left:300px;
+}
+
+.btnShift {
+  margin-left: -250px;
+}
+.App {
+  text-align: center;
+  background-color: beige;
+  height:200%;
+  width:100%;
+}
+.login{
+  width: 40%;
+  height: 30%;
+  margin-left: 400px;
+  margin-top:20px;
+}
+.signup{
+  width: 40%;
+  height: 30%;
+  margin-left: 300px;
+  margin-top:20px;
+}
+.btnstyle{
+  margin-left: -800px;
+}
+.row{
+  margin-top:10px;
+}
+.space {
+  margin-left: 50px;
+}
+.sign{
+  font-size: 20px;
+}
