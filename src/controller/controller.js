@@ -46,14 +46,19 @@ exports.login = async (req,res) => {
   console.log(req.body);
    email= req.body.email;
    password= req.body.password;
-   const data = await user.findOne({'email': req.body.email, 'password': req.body.password})
-   console.log(email, password, data)
-   if(data.email === email && data.password === password){
-     res.json(data)
-     console.log("Successfully login");
-   }
-   else{
-     console.log("Failed to login");
+   try {
+    const data = await user.findOne({'email': req.body.email, 'password': req.body.password})
+    console.log(email, password, data)
+    if(data.email === email && data.password === password){
+      res.json(data)
+      console.log("Successfully login");
+    }
+    else{
+     res.json(null)
+      console.log("Failed to login");
+    }
+   } catch (error) {
+     res.json(null)
    }
 };
 

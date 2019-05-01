@@ -24,9 +24,9 @@ class Header extends React.Component {
                             <li><Link to="/signup" className="fa fa-sign-in" aria-hidden="true">Signup</Link></li>
                         </ul>
                     }
-                     {
+                    {
                         isLoggedIn() && <ul className="nav navbar-nav navbar-right">
-                             <li><Link to="/addJobs" className="fa fa-plus">AddJobs</Link></li>
+                            <li><Link to="/addJobs" className="fa fa-plus">AddJobs</Link></li>
                             <li><Link to="/profile" className="fa fa-user" aria-hidden="true">Hi! {this.user.fullname}</Link></li>
                             <li><Link to="/" onClick={this.logout} className="fa fa-sign-in" aria-hidden="true">Logout</Link></li>
                         </ul>

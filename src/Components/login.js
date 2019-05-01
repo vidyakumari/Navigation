@@ -19,7 +19,9 @@ class Login extends React.Component {
       formErrors: { email: '', password: '' },
       emailValid: false,
       passwordValid: false,
-      formValid: false
+      formValid: false,
+      authValid: ''
+      
     }
   }
 
@@ -65,6 +67,10 @@ class Login extends React.Component {
     });
   }
 
+  errorClass(error) {
+    return (error.length === 0 ? '' : 'has-error')
+  }
+
   login = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
@@ -73,12 +79,19 @@ class Login extends React.Component {
     })
       .then((response) => {
         console.log(response);
+        if(response.data !== null){
         localStorage.setItem('user', JSON.stringify(response.data));
         this.props.history.push('/')
         window.location.reload()
+        }
+        else{
+          this.setState({
+              authValid: false
+          })
+        }
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.message)
       });
   }
 
@@ -88,9 +101,7 @@ class Login extends React.Component {
       <div className="body">
         {!isLoggedIn() && <form className="form-group login" onSubmit={this.login}>
           <div>
-            <div className="panel">
-              <FormErrors formErrors={this.state.formErrors} />
-            </div>
+            {this.errorClass(this.state.authValid) && <span className="error">Credentials not valid</span>}
             <div className="sign">Login</div>
             <div className="row">
               <div className="col-sm-12">
@@ -103,6 +114,7 @@ class Login extends React.Component {
                   onChange={this.handleUserInput}
                   placeholder={'Enter your email'}
                 />
+                 {this.errorClass(this.state.formErrors.email) && <span className="emailerror">Email is not valid</span>}
               </div>
             </div>
 
@@ -117,6 +129,7 @@ class Login extends React.Component {
                   onChange={this.handleUserInput}
                   placeholder={'Enter your password'}
                 />
+                 {this.errorClass(this.state.formErrors.password) && <span className="error">Password must contain 1 special character,1 small case letter and 1 digit</span>}
               </div>
             </div>
             <div className="row">
