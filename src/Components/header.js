@@ -26,7 +26,7 @@ class Header extends React.Component {
                     }
                     {
                         isLoggedIn() && <ul className="nav navbar-nav navbar-right">
-                            <li><Link to="/addJobs" className="fa fa-plus">AddJobs</Link></li>
+                            {isLoggedIn() && this.user.roles === 1 && <li><Link to="/addJobs" className="fa fa-plus">AddJobs</Link></li>}
                             <li><Link to="/profile" className="fa fa-user" aria-hidden="true">Hi! {this.user.fullname}</Link></li>
                             <li><Link to="/" onClick={this.logout} className="fa fa-sign-in" aria-hidden="true">Logout</Link></li>
                         </ul>
